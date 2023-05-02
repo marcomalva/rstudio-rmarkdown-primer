@@ -5,17 +5,17 @@ author:
   - Yuki Yanai (original document)
   - Marco Malva (minor modifications)
 output:
-  github_document:
-    toc: true
   html_document:
     toc: true
     toc_float:
       collapsed: false
       smooth_scroll: false
+  github_document:
+    toc: true
 ---
 
 ```{r global_option, include=FALSE}
-## Options for the whole makdown document.
+## Options for the whole markdown document.
 ## This chunk doesn't appear in the output because "include=FALSE"
 knitr::opts_chunk$set(warning = FALSE, echo = TRUE, message = TRUE,
                       fig.width = 6, fig.height = 5)
@@ -137,7 +137,7 @@ remove unnecessary details, and give a brief introduction into drawing a normal 
 
 Changes applied after and in addition to the changes from the original documents listed in the section [Credits](#Credits):
 
-1. Add Changelog section
+1. Add Change log section
 1. Add `github_document` to `output` as target in YAML so we get a markdown file that renders nicely on Github
 1. Add Output Targets section and sub section on `github_document` output.
 
@@ -181,7 +181,7 @@ Numbered lists can be created as follows.
     1. How?
 1. Third item
 
-Note that the numbers you entere only indicate that the list is numbered.  The odered numbers are automatically assigned in the output, so you don't have to worry about the numbering. It might be a good practice to use only "1" for numbered lists in order to make re-ordering easy.
+Note that the numbers you enter only indicate that the list is numbered.  The ordered numbers are automatically assigned in the output, so you don't have to worry about the numbering. It might be a good practice to use only "1" for numbered lists in order to make re-ordering easy.
 
 ## Local and Remote Links
 
@@ -195,15 +195,23 @@ You can also show remote images with their URL: ![R Logo Remote](http://www.r-pr
 
 ## Mathematical Formulae
 
-You can write math formulae as you do in LaTeX.
+You can write math formula as you do in LaTeX.
 To write an inline formula, type LaTeX style formula between `$`s. 
 E.g., $\bar{x} = \sum_{i=1}^n x_i / n.$
-To write formulae in an independent block, type LaTeX style formulae between `$$`s.
+To write formula in an independent block, type LaTeX style formula between `$$`s.
 E.g.,
 $$\sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}.$$
-# R Markdown Introduction
+
+# R Markdown Basics
 
 R Markdown is Markdown plus the ability to have R code chunks that can be evaluated by R and do statistical computation.
+R Markdown also supports the execution of other languages such as `python` or `bash`.
+The focus of this document is however on R code blocks which is also the most common use case for R Markdown.
+
+Markdown typically only renders code chunks with language specific syntax highlighting which makes code blocks much nicer to read.
+Some markdown processor allow to add line numbering, line highlighting and other features on top of the syntax highlighting.
+There also various plugin/extension to markdown that treat specific code blocks more like instructions, which is typically used
+to generate charts such as flow-charts, sequence diagram, gant diagrams and others from a textual specification of the chat.
 
 ## R Code Chunks
 
@@ -214,8 +222,8 @@ a <- 1:10
 b <- -1:-10
 ```
 
-As this example shows, the code chunk starts and ends with three backquotes (\`\`\`) (Note that the end mark must be three backquotes too, not three quotes).
-After the first three backquotes, write {r} to tell the program that it is a chunk for R codes.After "r" and a space, you should write the name of a chunk.
+As this example shows, the code chunk starts and ends with three back quotes (\`\`\`) (Note that the end mark must be three back quotes too, not three quotes).
+After the first three back quotes, write {r} to tell the program that it is a chunk for R codes.After "r" and a space, you should write the name of a chunk.
 You have to give a unique name to each chunk.
 
 In RStudio you can also insert code chunks through the menu `Code | Insert Chunk` or the hot key combination `Alt - Ctrl -I`.
@@ -302,7 +310,7 @@ The _sample size_ is ``r length(xv1)``, the _mean_ is ``r mean(xv1)``, and its _
 
 Showing the drawn sample in a histogram plot with vertical lines for the mean +/- standard deviation:
 
-```{r}
+```{r visualize-norm-dist-with-mean-sd}
 hist(xv1, breaks=60)
 abline(v=mean(xv1)          , col="red")
 abline(v=mean(xv1) - sd(xv1), col="blue")
@@ -314,7 +322,7 @@ abline(v=mean(xv1) + sd(xv1), col="blue")
 It is worth noting that R Markdown is **not limited to R code blocks**.
 About 40 languages are supported, one can list them with `names(knitr::knit_engines$get())`:
 
-```{r}
+```{r get-languages}
 names(knitr::knit_engines$get())
 ```
 
@@ -342,16 +350,15 @@ git push
 
 ## Getting Help
 
-If any of the commands is unknow you can enter `?command` e.g. `?rnorm` to see the help page for that function. 
+If any of the commands is unknown you can enter `?command` e.g. `?rnorm` to see the help page for that function. 
 
-For more information abour R Markdown, visit [R Markdown | RStudio](http://rmarkdown.rstudio.com/).
-<br>
+For more information about R Markdown, visit [R Markdown | RStudio](http://rmarkdown.rstudio.com/).
 
 # Example: Simulations in R
 
 ## Variances and Unbiased Variances
 
-Suppose the population variance of a random variabe $X$ is $\sigma^2$.
+Suppose the population variance of a random variable $X$ is $\sigma^2$.
 Let $s^2$ denote the sample variance of $X$:
 $$s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}.$$
 Then, the expected value of the sample variance is
@@ -395,7 +402,7 @@ rm(x)  ## remove x since we won't use it
 Once the simulation is done, let's examine the results.
 ```{r show-sim1}
 ## variance
-mean(s2)  ## mean of the sample variannce
+mean(s2)  ## mean of the sample variance
 sd(s2)    ## sd of the sample variance
 mean(u2)  ## mean of the unbiased variance
 sd(u2)    ## sd of the unbiased variance
@@ -410,11 +417,11 @@ To make it easy to iterate simulations, let's write a function to run simulation
 
 ```{r sim-funtion1}
 sim_var <- function(n, trials, true_var) {## function to simulate unbiased variance
-    ## Aarguments:
+    ## Arguments:
     ##    n = sample size
     ##    trials = num of iterations in a simulation
     ##    true_var = sigma^2 (population variance)
-    ## Rreturn: matrix of the means and sd's of s2 and u2
+    ## Return: matrix of the means and sd's of s2 and u2
     s2 <- rep(NA, trials)
     u2 <- rep(NA, trials)
     for (i in 1:trials) { ## loop for a simulation
@@ -429,14 +436,14 @@ sim_var <- function(n, trials, true_var) {## function to simulate unbiased varia
 }
 ```
 
-Let's run a simulatio with this function.
+Let's run a simulation with this function.
 First, when $n=5$, run:
 ```{r simvar-n5}
 sim_var(n = 5, trials = 1000, true_var = 10)
 ```
 We got the result.
 
-Let's increase the smaple size to 10,
+Let's increase the sample size to 10,
 ```{r simvar-n10}
 sim_var(n = 10, trials = 1000, true_var = 10)
 ```
