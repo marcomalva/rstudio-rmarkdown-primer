@@ -5,6 +5,8 @@ author:
   - Yuki Yanai (original document)
   - Marco Malva (minor modifications)
 output:
+  github_document:
+    toc: true
   html_document:
     toc: true
     toc_float:
@@ -114,7 +116,7 @@ The modifications were focused on making the document more useful to a reader wh
 modified other than what was necessary to avoid `knit` errors. All other changes are about providing more context and additional resources to the reader,
 remove unnecessary details, and give a brief introduction into drawing a normal distributed sample.
 
-1. Make `source source("~/.Rprofile")` optional as otherwise it won't knit if you do not have that file
+1. Make `source("~/.Rprofile")` conditional on existence of the file `~/.Rprofile` as otherwise it won't knit if you do not have that file
 1. Remove the comments on Yuki Yanai's CSS file as it is not needed to get started
 1. Remove the comments about generating the HTML file as clicking Knit in RStudio is more adequate for a beginner
 1. Add more context about the goals of this document
@@ -130,6 +132,14 @@ remove unnecessary details, and give a brief introduction into drawing a normal 
 1  Add section that lists which libraries were used, a good practice for reproducible documents
 1. Add note on help function
 1. Add links to published books
+
+## Changelog
+
+Changes applied after and in addition to the changes from the original documents listed in the section [Credits](#Credits):
+
+1. Add Changelog section
+1. Add `github_document` to `output` as target in YAML so we get a markdown file that renders nicely on Github
+1. Add Output Targets section and sub section on `github_document` output.
 
 # Markdown Basics
 
@@ -306,6 +316,28 @@ About 40 languages are supported, one can list them with `names(knitr::knit_engi
 
 ```{r}
 names(knitr::knit_engines$get())
+```
+
+## Output Targets
+
+The output targets are defined in the YAML section at the top of the document.
+
+### github_document
+
+The `.Rmd` file on Github is not nice to look at, i.e. take a glance at it [Literate-Programming.Rmd](https://github.com/marcomalva/rstudio-rmarkdown-primer/blob/develop/topic/distribution-shape/Literate-Programming.Rmd).
+
+The `github_document` output generates a markdown document that renders nicely on Github. See also:
+
+* [Creating and Pushing a R-Markdown Document to Github (including graphs)](https://gist.github.com/JoshuaTPierce/b919168421b40e06481080eb53c3fb2f)
+* [github\_document: Convert to GitHub Flavored Markdown in rmarkdown: Dynamic Documents for R](https://rdrr.io/cran/rmarkdown/man/github_document.html)
+
+The preview looks good. One has to add the generated files to git to be able to push them to Github.
+I accomplished this from command line:
+
+```{bash git_add, eval=FALSE, engine="sh"}
+git add topic/distribution-shape/Literate-Programming.Rmd topic/distribution-shape/Literate-Programming.md topic/distribution-shape/Literate-Programming_files/
+git commit
+git push
 ```
 
 ## Getting Help
