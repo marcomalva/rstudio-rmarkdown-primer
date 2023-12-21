@@ -1,0 +1,100 @@
+---
+title: "Data Frames and Tibbles"
+author: "Marco Malva"
+abstract: Create **data frames** and **tibbles** from **vectors** and show them as (interactive) **tables**.
+date: "2023-05-11"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    code_folding: "hide"
+---
+
+<!-- Setting HTML stype to allow for a wider HTML output, force it with !important, see <https://stackoverflow.com/a/69329334> -->
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 2100px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+library(kableExtra)
+```
+
+## Create Classic Data Frame
+
+Creating a classic R data frame from a vector of values, renaming the column and adding an index column:
+
+```{r demo1, R.options = list(width = 280)}
+df1 <- c('Spurs', 'Lakers', 'Pistons', 'Mavs') |> as.data.frame() |> dplyr::rename_with(.cols = 1, ~"team") |> tibble::rowid_to_column("idx")
+df1
+```
+
+## Create Tibbles
+
+Same as the classic data frame but converting it to a tibble.
+
+For tibbles refer to `vignette("tibble")` or read [10 Tibbles \| R for Data Science](https://r4ds.had.co.nz/tibbles.html). for background on HTML table with CSS to alternate table see: [CSS table with alternating color rows](https://www.textfixer.com/tutorials/css-table-alternating-rows.php)
+
+```{r demo2}
+df2 <- c('Spurs', 'Lakers', 'Pistons', 'Mavs') |> as.data.frame() |> dplyr::rename_with(.cols = 1, ~"team") |> tibble::rowid_to_column("idx") |> tibble::as_tibble() 
+df2
+```
+
+## Static Tables
+
+Converting the classic data frame and the tibble into HTML tables.
+
+For more details refer to: [Create Awesome HTML Table with knitr::kable and kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html).
+
+First, with the classic data frame:
+
+```{r table1}
+df1 %>%
+  kbl() %>%
+  kable_material(c("striped", "hover"))
+```
+
+And for the tibble data frame:
+
+```{r table2}
+df2 %>%
+  kbl() %>%
+  kable_material(c("striped", "hover"))
+```
+
+## Interactive DT Tables
+
+For interactive DT tables and other RMarkdown tricks see: [Pimp my RMD: a few tips for R Markdown](https://holtzy.github.io/Pimp-my-rmd/)
+
+First, with the classic data frame:
+
+```{r table-dt1}
+library(DT)
+datatable(df1, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
+```
+
+And for the tibble data frame:
+
+```{r table-dt2}
+library(DT)
+datatable(df2, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
+```
+
+Do DT table show columns different when they are factors?
+
+```{r table-dt2-factor}
+library(DT)
+df2fac <- df2
+df2fac$team = as.factor(df2fac$team)
+datatable(df2fac, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
+```
