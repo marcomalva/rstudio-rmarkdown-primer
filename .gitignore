@@ -1,1 +1,5 @@
+# ignore the generated html files
 *.html
+
+# allow to crates stash/ folders to place local stuff in
+stash/
