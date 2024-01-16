@@ -4,12 +4,15 @@ author: "Marco Malva"
 abstract: Create **data frames** and **tibbles** from **vectors** and show them as (interactive) **tables**.
 date: "2023-05-11"
 output:
+  github_document:
+    toc: true
   html_document:
     toc: true
     toc_float:
       collapsed: false
       smooth_scroll: false
     code_folding: "hide"
+always_allow_html: true
 ---
 
 <!-- Setting HTML stype to allow for a wider HTML output, force it with !important, see <https://stackoverflow.com/a/69329334> -->
@@ -29,6 +32,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(kableExtra)
 ```
+
+> Not all table output is available in the `github_document` output format which is why I had to enable `always_allow_html`.
+> The output could be improved by installing webshot packages but that is currently beyond the scope of this document.
+> For now, for best output, select `html_document`.
 
 ## Create Classic Data Frame
 

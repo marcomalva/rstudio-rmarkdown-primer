@@ -61,6 +61,22 @@ This document covers
 
 ## Topics Overview
 
+- Basics
+  - basic skills for text formatting, math equations, curves and plots, and editor modes, see [text-formatting](./topic/basics/text-formatting.Rmd)
+  - show tables statically or dynamically, see [data-frames-and-tibbles](./topic/basics/data-frames-and-tibbles.Rmd)
+- JSON
+  - tidyJSON: features word cloud, JSON document graph, build-in JSON editor, Violin plot, see [setup-tidyjson](./topic/json/setup-tidyjson.Rmd)
+  - PlantUML: visual representation of JSON object structure or class structure, see [use-plantuml](./topic/json/use-plantuml.Rmd)
+
+Same as above but pointing the links to the generated Markdown files which display nicer on Github:
+
+- Basic
+  - basic skills for text formatting, math equations, curves and plots, and editor modes, see [text-formatting](./topic/basics/text-formatting.md)
+  - show tables statically or dynamically, see [data-frames-and-tibbles](./topic/basics/data-frames-and-tibbles.md)
+- JSON
+  - tidyJSON: features word cloud, JSON document graph, build-in JSON editor, Violin plot, see [setup-tidyjson](./topic/json/setup-tidyjson.md)
+  - PlantUML: visual representation of JSON object structure or class structure, see [use-plantuml](./topic/json/use-plantuml.md)
+
 > TBD: Generated an overview to each topic and the documents within.
 
 ## Future Topics

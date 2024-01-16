@@ -1,0 +1,36 @@
+@startuml
+!theme sandstone
+
+left to right direction
+skinparam roundcorner 5
+skinparam linetype ortho
+skinparam shadowing false
+skinparam handwritten false
+skinparam class {
+    BackgroundColor white
+    HeaderBackgroundColor lightblue
+    AttributeFontColor black
+    ArrowColor #2688d4
+    BorderColor #2688d4
+}
+
+!define primary_key(x) <b><color:black><&key> x</color></b>
+!define foreign_key(x) <b><color:blue><&key> x</color></b>
+!define column(x) <color:green><&media-record></color> x
+!define table(x) entity x << (T, white) >>
+
+table( user ) {
+  primary_key( id ): UUID 
+  column( isActive ): BOOLEAN 
+  foreign_key( cityId ): INTEGER <<FK>>
+}
+
+table( city ) {
+  primary_key( id ): UUID 
+  column( name ): CHARACTER VARYING 
+  column( country ): CHARACTER VARYING
+  column( postCode ): INTEGER
+}
+
+user }|--|| city  : <color:blue>cityId</color>
+@enduml

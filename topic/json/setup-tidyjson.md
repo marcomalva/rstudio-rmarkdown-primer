@@ -1,0 +1,287 @@
+Setup tidyjson
+================
+Marco Malva
+2023-12-21
+
+- <a href="#system-packages" id="toc-system-packages">System Packages</a>
+- <a href="#r-packages" id="toc-r-packages">R Packages</a>
+- <a href="#help-r-packages" id="toc-help-r-packages">Help R Packages</a>
+- <a href="#links" id="toc-links">Links</a>
+- <a href="#session-info" id="toc-session-info">Session Info</a>
+  - <a href="#session-info---readme" id="toc-session-info---readme">Session
+    Info - README</a>
+  - <a href="#session-info---vignettesvisualizing-jsonrmd"
+    id="toc-session-info---vignettesvisualizing-jsonrmd">Session Info -
+    vignettes/visualizing-json.Rmd</a>
+  - <a href="#session-info---vignettesintroduction-to-tidyjsonrmd"
+    id="toc-session-info---vignettesintroduction-to-tidyjsonrmd">Session
+    Info - vignettes/introduction-to-tidyjson.Rmd</a>
+
+This documents described how I got
+[tidyjson](https://github.com/colearendt/tidyjson) to work with my
+`podman` RStudio container.
+
+- The `README.Rmd` worked without any additional installations.
+- The `vignettes/visualizing-json.Rmd` worked after installing a couple
+  of additional system and R packages.
+- The `vignettes/introduction-to-tidyjson.Rmd` also knits fine.
+
+Now, one can clone the
+[tidyjson](https://github.com/colearendt/tidyjson) Github project and
+knit the RMarkdown documents in the `vignettes` folder.
+
+I was looking for a way to illustrate and document database tables with
+JSON data columns fields. While `tidyjson` has some interesting
+illustration capabilities, such as a word cloud and JSON document graph,
+it is **not what I am looking for**. The [PlantUML
+JSON](https://plantuml.com/json) features fit the bill much better.
+
+See also: [setup-plantuml.Rmd](./setup-plantuml.Rmd)
+
+## System Packages
+
+The launch script is
+[./scripts/docker-run-rstudio-mounted-volumes.sh](https://github.com/marcomalva/rstudio-rmarkdown-primer/blob/develop/scripts/docker-run-rstudio-mounted-volumes.sh)
+
+I connected to my `docker` container with `podman exec ...` and
+installed the missing system packages with `apt install ...`:
+
+``` bash
+podman exec -it rstudio_mounted /bin/bash
+
+apt update
+apt install r-cran-magrittr r-cran-matrix r-cran-nmf r-cran-irlba liblapack-dev libblas-dev
+apt install r-cran-igraph
+apt install libglpk-dev
+apt install libgmp-dev
+```
+
+## R Packages
+
+``` r
+install.packages("igraph")
+install.packages("wordcloud")
+install.packages("listviewer")
+```
+
+## Help R Packages
+
+``` r
+## these work
+??tidyjson
+??igraph
+??diagram
+
+# these did not work
+??dagitty
+??ggdag
+```
+
+## Links
+
+- [GitHub - colearendt/tidyjson: Tidy your JSON data in R with
+  tidyjson](https://github.com/colearendt/tidyjson)
+- [igraph build issue on Ubuntu 16.04 · Issue \#209 · igraph/rigraph ·
+  GitHub](https://github.com/igraph/rigraph/issues/209)
+- [JSON tree in rmarkdown plotly - Stack
+  Overflow](https://stackoverflow.com/questions/51378535/json-tree-in-rmarkdown-plotly)
+- [prettify: Prettify or minify a JSON string in
+  jsonlite](https://rdrr.io/cran/jsonlite/man/prettify.html)
+- [40 Reports with R Markdown \| The Epidemiologist R
+  Handbook](https://epirhandbook.com/en/reports-with-r-markdown.html)
+- [Getting R and D3.js to play nicely in R
+  markdown](https://towardsdatascience.com/getting-r-and-d3-js-to-play-nicely-in-r-markdown-270e302a52d3)
+- [GitHub - becausealice2/D3-in-Rmd: How to get R and D3 to play nice in
+  Rmd files](https://github.com/becausealice2/D3-in-Rmd)
+- [4.15 Create diagrams \| R Markdown
+  Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html)
+- [4.15 Create diagrams - nomnoml \| R Markdown
+  Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html#ref-R-nomnoml)
+- [4.15 Create diagrams - dagitty \| R Markdown
+  Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html#ref-R-dagitty)
+- [4.15 Create diagrams - ggdag \| R Markdown
+  Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html#ref-R-ggdag)
+- [GitHub - rkrug/plantuml: R package to build UML graphs using
+  plantuml](https://github.com/rkrug/plantuml)
+- [plantuml.com/json](https://plantuml.com/json)
+- [CRAN - Package
+  ggdag](https://cran.r-project.org/web/packages/ggdag/index.html)
+- [Analyze and Create Elegant Directed Acyclic Graphs •
+  ggdag](https://r-causal.github.io/ggdag//)
+- [GitHub - r-causal/ggdag: An R package for working with causal
+  directed acyclic graphs (DAGs)](https://github.com/r-causal/ggdag)
+- [dagitty: Graphical Analysis of Structural Causal
+  Models](https://cran.r-project.org/web/packages/dagitty/dagitty.pdf)
+- [Distill for R Markdown:
+  Diagrams](https://rstudio.github.io/distill/diagrams.html)
+- [Include DiagrammeR/mermaid in a
+  Rmarkdown](https://stackoverflow.com/questions/40803017/how-to-include-diagrammer-mermaid-flowchart-in-a-rmarkdown-file)
+- [nomnoml: Sassy ‘UML’
+  Diagrams](https://cran.r-project.org/web/packages/nomnoml/nomnoml.pdf)
+- [Sassy UML Diagrams • nomnoml](https://rstudio.github.io/nomnoml/)
+- [diagram: Functions for Visualising Simple Graphs (Networks), Plotting
+  Flow
+  Diagrams](https://cran.r-project.org/web/packages/diagram/diagram.pdf)
+- [GitHub - rkrug/plantuml: R package to build UML graphs using
+  plantuml](https://github.com/rkrug/plantuml)
+- [GitHub - jtextor/dagitty: Graphical analysis of structural causal
+  models / graphical causal models.](https://github.com/jtextor/dagitty)
+- [dagitty/gui at master · jtextor/dagitty ·
+  GitHub](https://github.com/jtextor/dagitty/tree/master/gui)
+- [DAGitty - drawing and analyzing causal diagrams
+  (DAGs)](https://dagitty.net/)
+- [DAGitty v3.1](https://dagitty.net/dags.html)
+
+## Session Info
+
+It is a good practice to add a session info at the end of your document.
+It will increase reproducibility and costs only one line of code, see
+[Pimp my RMD: a few tips for R
+Markdown](https://holtzy.github.io/Pimp-my-rmd/).
+
+``` r
+sessionInfo()
+```
+
+    ## R version 4.2.2 (2022-10-31)
+    ## Platform: x86_64-pc-linux-gnu (64-bit)
+    ## Running under: Ubuntu 22.04.2 LTS
+    ## 
+    ## Matrix products: default
+    ## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+    ## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so
+    ## 
+    ## locale:
+    ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+    ##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+    ##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+    ##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+    ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+    ## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+    ## 
+    ## attached base packages:
+    ## [1] stats     graphics  grDevices utils     datasets  methods   base     
+    ## 
+    ## loaded via a namespace (and not attached):
+    ##  [1] compiler_4.2.2    fastmap_1.1.1     cli_3.6.1         tools_4.2.2      
+    ##  [5] htmltools_0.5.6   rstudioapi_0.15.0 yaml_2.3.7        rmarkdown_2.25   
+    ##  [9] knitr_1.44        xfun_0.40         digest_0.6.33     rlang_1.1.1      
+    ## [13] evaluate_0.21
+
+### Session Info - README
+
+``` r
+sessionInfo()
+#> R version 4.2.2 (2022-10-31)
+#> Platform: x86_64-pc-linux-gnu (64-bit)
+#> Running under: Ubuntu 22.04.2 LTS
+#>
+#> Matrix products: default
+#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so
+#>
+#> locale:
+#>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+#>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
+#>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+#>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+#>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+#> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
+#>
+#> attached base packages:
+#> [1] stats     graphics  grDevices utils     datasets  methods   base
+#>
+#> other attached packages:
+#> [1] dplyr_1.1.4    tidyjson_0.3.2
+#>
+#> loaded via a namespace (and not attached):
+#>  [1] rstudioapi_0.15.0 knitr_1.44        magrittr_2.0.3    tidyselect_1.2.0
+#>  [5] R6_2.5.1          rlang_1.1.1       fastmap_1.1.1     fansi_1.0.4
+#>  [9] tools_4.2.2       xfun_0.40         utf8_1.2.3        cli_3.6.1
+#> [13] withr_2.5.0       htmltools_0.5.6   yaml_2.3.7        assertthat_0.2.1
+#> [17] digest_0.6.33     tibble_3.2.1      lifecycle_1.0.3   purrr_1.0.2
+#> [21] tidyr_1.3.0       vctrs_0.6.5       glue_1.6.2        evaluate_0.21
+#> [25] rmarkdown_2.25    compiler_4.2.2    pillar_1.9.0      generics_0.1.3
+#> [29] jsonlite_1.8.7    pkgconfig_2.0.3
+```
+
+### Session Info - vignettes/visualizing-json.Rmd
+
+``` r
+sessionInfo()
+#> R version 4.2.2 (2022-10-31)
+#> Platform: x86_64-pc-linux-gnu (64-bit)
+#> Running under: Ubuntu 22.04.2 LTS
+#>
+#> Matrix products: default
+#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so
+#>
+#> locale:
+#>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+#>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
+#>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+#>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+#>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+#> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
+#>
+#> attached base packages:
+#> [1] stats     graphics  grDevices utils     datasets  methods   base
+#>
+#> other attached packages:
+#>  [1] tidyjson_0.3.2     listviewer_4.0.0   viridis_0.6.4      viridisLite_0.4.2
+#>  [5] wordcloud_2.6      RColorBrewer_1.1-3 igraph_1.6.0       ggplot2_3.4.4
+#>  [9] forcats_1.0.0      magrittr_2.0.3     purrr_1.0.2        dplyr_1.1.4
+#> [13] jsonlite_1.8.7
+#>
+#> loaded via a namespace (and not attached):
+#>  [1] Rcpp_1.0.11       pillar_1.9.0      bslib_0.5.1       compiler_4.2.2
+#>  [5] jquerylib_0.1.4   tools_4.2.2       digest_0.6.33     evaluate_0.21
+#>  [9] lifecycle_1.0.3   tibble_3.2.1      gtable_0.3.4      pkgconfig_2.0.3
+#> [13] rlang_1.1.1       cli_3.6.1         rstudioapi_0.15.0 yaml_2.3.7
+#> [17] xfun_0.40         fastmap_1.1.1     gridExtra_2.3     withr_2.5.0
+#> [21] knitr_1.44        htmlwidgets_1.6.2 generics_0.1.3    vctrs_0.6.5
+#> [25] sass_0.4.7        grid_4.2.2        tidyselect_1.2.0  glue_1.6.2
+#> [29] R6_2.5.1          fansi_1.0.4       rmarkdown_2.25    farver_2.1.1
+#> [33] tidyr_1.3.0       ellipsis_0.3.2    scales_1.2.1      htmltools_0.5.6
+#> [37] assertthat_0.2.1  colorspace_2.1-0  labeling_0.4.3    utf8_1.2.3
+#> [41] munsell_0.5.0     cachem_1.0.8
+```
+
+### Session Info - vignettes/introduction-to-tidyjson.Rmd
+
+``` r
+sessionInfo()
+#> R version 4.2.2 (2022-10-31)
+#> Platform: x86_64-pc-linux-gnu (64-bit)
+#> Running under: Ubuntu 22.04.2 LTS
+#>
+#> Matrix products: default
+#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so
+#>
+#> locale:
+#>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+#>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
+#>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+#>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+#>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+#> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
+#>
+#> attached base packages:
+#> [1] stats     graphics  grDevices utils     datasets  methods   base
+#>
+#> other attached packages:
+#> [1] purrr_1.0.2    dplyr_1.1.4    tidyjson_0.3.2
+#>
+#> loaded via a namespace (and not attached):
+#>  [1] rstudioapi_0.15.0 knitr_1.44        magrittr_2.0.3    tidyselect_1.2.0
+#>  [5] R6_2.5.1          rlang_1.1.1       fastmap_1.1.1     fansi_1.0.4
+#>  [9] tools_4.2.2       xfun_0.40         utf8_1.2.3        cli_3.6.1
+#> [13] withr_2.5.0       jquerylib_0.1.4   htmltools_0.5.6   yaml_2.3.7
+#> [17] digest_0.6.33     assertthat_0.2.1  tibble_3.2.1      lifecycle_1.0.3
+#> [21] tidyr_1.3.0       sass_0.4.7        vctrs_0.6.5       glue_1.6.2
+#> [25] cachem_1.0.8      evaluate_0.21     rmarkdown_2.25    compiler_4.2.2
+#> [29] bslib_0.5.1       pillar_1.9.0      generics_0.1.3    jsonlite_1.8.7
+#> [33] pkgconfig_2.0.3
+```
