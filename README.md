@@ -35,9 +35,29 @@ See [install-add-in.md](./install-add-in.md).
 
 See [r-snippet-links.md](./r-snippet-links.md) and [r-snippets.Rmd](./r-snippets.Rmd)
 
-## Hello World
+## Introduction
+
+### Hello World
+
+A simple [rocker-getting-started-sanboxed.md](./hello-world/rocker-getting-started-sanboxed.md) markdown document explains
+how to create your first, simple RMarkdown document.
 
 You can open [helloWorld.Rmd](./helloWorld.Rmd) and Knit it to check your installation.
+
+### Introduction into Literate Programming
+
+An more powerful introduction than the simple "Hello World" examples is provided
+in form of the [Literate-Programming.Rmd](./topic/distribution-shape/Literate-Programming.Rmd) RMarkdown document.
+You can view its [Markdown output](./topic/distribution-shape/Literate-Programming.md).
+
+This document covers
+
+- what "Literate Programming" is about and why it is useful,
+- basic Markdown concepts (bold, italic, lists, images, links)
+- basic RMarkdown concepts (code changes, plots charts, normal distribution, output targets, help),
+- mathematical formula in a document
+- how to use a simulation by illustrating the difference between biased on non biased variance estimators,
+- R session info
 
 ## Topics Overview
 
@@ -46,8 +66,4 @@ You can open [helloWorld.Rmd](./helloWorld.Rmd) and Knit it to check your instal
 ## Future Topics
 
 See [future-topics.Rmd](./future-topics.Rmd)
-
-
-
-
 

@@ -16,11 +16,13 @@ Yuki Yanai (original document)Marco Malva (minor modifications)
   - <a href="#italic-and-bold-fonts" id="toc-italic-and-bold-fonts">Italic
     and Bold Fonts</a>
   - <a href="#bullet-points" id="toc-bullet-points">Bullet Points</a>
-  - <a href="#numberd-lists" id="toc-numberd-lists">Numberd Lists</a>
+  - <a href="#numbered-lists" id="toc-numbered-lists">Numbered Lists</a>
   - <a href="#local-and-remote-links" id="toc-local-and-remote-links">Local
     and Remote Links</a>
-  - <a href="#mathematical-formulae"
-    id="toc-mathematical-formulae">Mathematical Formulae</a>
+  - <a href="#mathematical-formula"
+    id="toc-mathematical-formula">Mathematical Formula</a>
+- <a href="#r-markdown-basics" id="toc-r-markdown-basics">R Markdown
+  Basics</a>
   - <a href="#r-code-chunks" id="toc-r-code-chunks">R Code Chunks</a>
   - <a href="#quoting-r-variable-values-in-text"
     id="toc-quoting-r-variable-values-in-text">Quoting R Variable Values in
@@ -202,12 +204,15 @@ drawing a normal distributed sample.
 14. Add note on help function
 15. Add links to published books
 
+> The list above uses `1.` as the number for each line, the markdown
+> render takes care of creating a correct sequence.
+
 ## Changelog
 
 Changes applied after and in addition to the changes from the original
 documents listed in the section [Credits](#Credits):
 
-1.  Add Changelog section
+1.  Add Change log section
 2.  Add `github_document` to `output` as target in YAML so we get a
     markdown file that renders nicely on Github
 3.  Add Output Targets section and sub section on `github_document`
@@ -215,7 +220,9 @@ documents listed in the section [Credits](#Credits):
 
 # Markdown Basics
 
-In Markdown and R Markdown you can simply write your sentences as usual.
+In Markdown and R Markdown you can simply write your sentences as usual,
+which means any text editor will do, one can version control the files
+easily, and compare files easily.
 
 ## Italic and Bold Fonts
 
@@ -244,7 +251,7 @@ Alternatively,
 A single space is necessary after \* or -. To make nested lists, indent
 blocks by tab.
 
-## Numberd Lists
+## Numbered Lists
 
 Numbered lists can be created as follows.
 
@@ -254,11 +261,10 @@ Numbered lists can be created as follows.
     2.  How?
 3.  Third item
 
-Note that the numbers you entere only indicate that the list is
-numbered. The odered numbers are automatically assigned in the output,
-so you don’t have to worry about the numbering. It might be a good
-practice to use only “1” for numbered lists in order to make re-ordering
-easy.
+Note that the numbers you enter only indicate that the list is numbered.
+The ordered numbers are automatically assigned in the output, so you
+don’t have to worry about the numbering. It might be a good practice to
+use only “1” for numbered lists in order to make re-ordering easy.
 
 ## Local and Remote Links
 
@@ -274,20 +280,45 @@ Remote](http://www.r-project.org/Rlogo.png)
 > I used `pngquant` to compress the PNG image down to `11 KB` from
 > `32 KB`.
 
-## Mathematical Formulae
+## Mathematical Formula
 
-You can write math formulae as you do in LaTeX. To write an inline
-formula, type LaTeX style formula between `$`s. E.g.,
-![\bar{x} = \sum\_{i=1}^n x_i / n.](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbar%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5En%20x_i%20%2F%20n. "\bar{x} = \sum_{i=1}^n x_i / n.")
-To write formulae in an independent block, type LaTeX style formulae
-between `$$`s. E.g.,
+You can write math formula as you do in LaTeX either inline or in an
+independent block.
 
-![\sigma^2 = \frac{\sum\_{i=1}^n (x_i - \mu)^2}{n}.](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csigma%5E2%20%3D%20%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20%5Cmu%29%5E2%7D%7Bn%7D. "\sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}.")
+To write an **inline formula**, place the LaTeX style formula between
+Dollar signs (e.g. `$...$`), such as $\bar{x} = \sum_{i=1}^n x_i / n.$
 
-\# R Markdown Introduction
+To write a formula in an **independent block**, place the LaTeX formula
+in a new line between two Dollar signs (`$$`), e.g.,
+$$\sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}.$$
+
+The above w/o any rendering:
+
+``` ansi
+To write an **inline formula**, type LaTeX style formula between Dollar signs (i.e. `$`),
+e.g., $\bar{x} = \sum_{i=1}^n x_i / n.$
+
+To write a formula in an independent block, place the LaTeX style formula in a new line between two Dollar signs (`$$`), 
+e.g., 
+$$\sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}.$$
+```
+
+# R Markdown Basics
 
 R Markdown is Markdown plus the ability to have R code chunks that can
-be evaluated by R and do statistical computation.
+be evaluated by R and do statistical computation. R Markdown also
+supports the execution of other languages such as `python` or `bash`.
+The focus of this document is however on R code blocks which is also the
+most common use case for R Markdown.
+
+Markdown typically only renders code chunks with language specific
+syntax highlighting which makes code blocks much nicer to read. Some
+markdown processor allow to add line numbering, line highlighting and
+other features on top of the syntax highlighting. There also various
+plugin/extension to markdown that treat specific code blocks more like
+instructions, which is typically used to generate charts such as
+flow-charts, sequence diagram, gant diagrams and others from a textual
+specification of the chat.
 
 ## R Code Chunks
 
@@ -299,12 +330,12 @@ a <- 1:10
 b <- -1:-10
 ```
 
-As this example shows, the code chunk starts and ends with three
-backquotes (\`\`\`) (Note that the end mark must be three backquotes
-too, not three quotes). After the first three backquotes, write {r} to
-tell the program that it is a chunk for R codes.After “r” and a space,
-you should write the name of a chunk. You have to give a unique name to
-each chunk.
+As this example shows, the code chunk starts and ends with three back
+quotes (\`\`\`) (Note that the end mark must be three back quotes too,
+not three quotes). After the first three back quotes, write {r} to tell
+the program that it is a chunk for R codes.After “r” and a space, you
+should write the name of a chunk. You have to give a unique name to each
+chunk.
 
 In RStudio you can also insert code chunks through the menu
 `Code | Insert Chunk` or the hot key combination `Alt - Ctrl -I`.
@@ -315,10 +346,8 @@ To insert an R code (without the output) in a sentence, write, for
 instance, “you can obtain the mean of x by `mean(x)`”.
 
 To show the outcome (evaluated value) in a sentence, insert “r” before
-the command: “the mean of
-![a](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;a "a")
-is 5.5”. The variable `a` is a vector with numbers from 1 to 10, i.e. 1,
-2, 3, 4, 5, 6, 7, 8, 9, 10.
+the command: “the mean of $a$ is 5.5”. The variable `a` is a vector with
+numbers from 1 to 10, i.e. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
 
 > This is a key point of **literate programming** as it allows to insert
 > computed values in to the text while also having the compute
@@ -342,7 +371,7 @@ organized by family and types.
 
 If you are looking for an inspiration check out the [Dataviz Inspiration
 Site](https://www.dataviz-inspiration.com/). It showcases 159 of the
-most beautiful and impactful dataviz projects.
+most beautiful and impactful Dataviz projects.
 
 If you are looking for a guide to pick the best graph type your data
 give [Data-To-Viz](https://www.data-to-viz.com/) a try. It leads you to
@@ -362,7 +391,7 @@ deferred to another document for a more in depth discussion.
 For now just a few web links to get you started if you want to dive into
 it:
 
-- [Diagrams in Rmarkdown Documents \| DiagrammeR
+- [Diagrams in RMarkdown Documents \| DiagrammeR
   Package](https://rstudio-pubs-static.s3.amazonaws.com/194240_c9bc85a7f24b41a2b1f42724c525a109.html#1)
 - [RStudio v0.99 Preview: Graphviz and DiagrammeR -
   Posit](https://posit.co/blog/rstudio-v0-99-preview-graphviz-and-diagrammer/)
@@ -370,7 +399,7 @@ it:
   DiagrammeR](https://rich-iannone.github.io/DiagrammeR/articles/graphviz-mermaid.html)
 - [Graph/Network Visualization •
   DiagrammeR](https://rich-iannone.github.io/DiagrammeR/)
-- [DiagrammeR/mermaid flowchart in a Rmarkdown
+- [DiagrammeR/mermaid flowchart in a RMarkdown
   file](https://stackoverflow.com/questions/40803017/how-to-include-diagrammer-mermaid-flowchart-in-a-rmarkdown-file)
 - [Gantt diagrams \| Mermaid](https://mermaid.js.org/syntax/gantt.html)
 - [Kroki!](https://kroki.io/)
@@ -427,8 +456,8 @@ with mean 0 and variance of 10 with:
 xv1 <- rnorm(n=300, mean = 0, sd = sqrt(10)) # draw n=300 normal distributed values and store them in variable xv1
 ```
 
-The *sample size* is `300`, the *mean* is `-0.2594894`, and its
-*standard deviation* is `3.0258825`.
+The *sample size* is `300`, the *mean* is `-8.4472856\times 10^{-4}`,
+and its *standard deviation* is `3.1459393`.
 
 Showing the drawn sample in a histogram plot with vertical lines for the
 mean +/- standard deviation:
@@ -440,7 +469,7 @@ abline(v=mean(xv1) - sd(xv1), col="blue")
 abline(v=mean(xv1) + sd(xv1), col="blue")
 ```
 
-![](Literate-Programming_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](Literate-Programming_files/figure-gfm/visualize-norm-dist-with-mean-sd-1.png)<!-- -->
 
 ## Supported Languages
 
@@ -493,45 +522,26 @@ git push
 
 ## Getting Help
 
-If any of the commands is unknow you can enter `?command` e.g. `?rnorm`
+If any of the commands is unknown you can enter `?command` e.g. `?rnorm`
 to see the help page for that function.
 
-For more information abour R Markdown, visit [R Markdown \|
-RStudio](http://rmarkdown.rstudio.com/). <br>
+For more information about R Markdown, visit [R Markdown \|
+RStudio](http://rmarkdown.rstudio.com/).
 
 # Example: Simulations in R
 
 ## Variances and Unbiased Variances
 
-Suppose the population variance of a random variabe
-![X](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;X "X")
-is
-![\sigma^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csigma%5E2 "\sigma^2").
-Let
-![s^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s%5E2 "s^2")
-denote the sample variance of
-![X](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;X "X"):
-
-![s^2 = \frac{\sum\_{i=1}^n (x_i - \bar{x})^2}{n}.](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s%5E2%20%3D%20%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2%7D%7Bn%7D. "s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}.")
-
-Then, the expected value of the sample variance is
-
-![\mathrm{E}(s^2) = \frac{n-1}{n} \sigma^2.](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cmathrm%7BE%7D%28s%5E2%29%20%3D%20%5Cfrac%7Bn-1%7D%7Bn%7D%20%5Csigma%5E2. "\mathrm{E}(s^2) = \frac{n-1}{n} \sigma^2.")
-
-This shows that
-![s^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s%5E2 "s^2")
-is *not* the unbiased estimator of
-![\sigma^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csigma%5E2 "\sigma^2").
-The unbiased estimator of
-![\sigma^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csigma%5E2 "\sigma^2")
-is
-![u^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;u%5E2 "u^2"):
-
-![u^2 = \frac{n}{n-1}s^2 = \frac{\sum\_{i=1}^n (x_i - \bar{x})^2}{n-1}.](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;u%5E2%20%3D%20%5Cfrac%7Bn%7D%7Bn-1%7Ds%5E2%20%3D%20%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5En%20%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2%7D%7Bn-1%7D. "u^2 = \frac{n}{n-1}s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1}.")
-
-It is easy to prove that
-![\mathrm{E}(u^2) = \sigma^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cmathrm%7BE%7D%28u%5E2%29%20%3D%20%5Csigma%5E2 "\mathrm{E}(u^2) = \sigma^2"),
-but let’s verify it by simulations.
+Suppose the population variance of a random variable $X$ is $\sigma^2$.
+Let $s^2$ denote the sample variance of $X$:
+$$s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}.$$ Then, the expected
+value of the sample variance is
+$$\mathrm{E}(s^2) = \frac{n-1}{n} \sigma^2.$$ This shows that $s^2$ is
+*not* the unbiased estimator of $\sigma^2$. The unbiased estimator of
+$\sigma^2$ is $u^2$:
+$$u^2 = \frac{n}{n-1}s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1}.$$
+It is easy to prove that $\mathrm{E}(u^2) = \sigma^2$, but let’s verify
+it by simulations.
 
 ## Setting Up the Simulations
 
@@ -553,12 +563,9 @@ library("dplyr")
     ## 
     ##     intersect, setdiff, setequal, union
 
-Then, let’s specify the sample size
-(![n](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n "n")),
-the number of trials in a simulation, and the value of the population
-variance
-(![\sigma^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csigma%5E2 "\sigma^2")).
-In addition, let’s make a variable to save the simulation results.
+Then, let’s specify the sample size ($n$), the number of trials in a
+simulation, and the value of the population variance ($\sigma^2$). In
+addition, let’s make a variable to save the simulation results.
 
 ``` r
 n <- 10         ## sample size
@@ -584,32 +591,31 @@ Once the simulation is done, let’s examine the results.
 
 ``` r
 ## variance
-mean(s2)  ## mean of the sample variannce
+mean(s2)  ## mean of the sample variance
 ```
 
-    ## [1] 9.12289
+    ## [1] 8.973224
 
 ``` r
 sd(s2)    ## sd of the sample variance
 ```
 
-    ## [1] 4.292783
+    ## [1] 4.186346
 
 ``` r
 mean(u2)  ## mean of the unbiased variance
 ```
 
-    ## [1] 10.13654
+    ## [1] 9.970249
 
 ``` r
 sd(u2)    ## sd of the unbiased variance
 ```
 
-    ## [1] 4.769759
+    ## [1] 4.651495
 
-As this example shows,
-![s^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s%5E2 "s^2")
-(s2) tends to be smaller than the true (population) variance. <br>
+As this example shows, $s^2$ (s2) tends to be smaller than the true
+(population) variance. <br>
 
 ## Write Functions to Run Simulations
 
@@ -620,11 +626,11 @@ function to run simulations.
 
 ``` r
 sim_var <- function(n, trials, true_var) {## function to simulate unbiased variance
-    ## Aarguments:
+    ## Arguments:
     ##    n = sample size
     ##    trials = num of iterations in a simulation
     ##    true_var = sigma^2 (population variance)
-    ## Rreturn: matrix of the means and sd's of s2 and u2
+    ## Return: matrix of the means and sd's of s2 and u2
     s2 <- rep(NA, trials)
     u2 <- rep(NA, trials)
     for (i in 1:trials) { ## loop for a simulation
@@ -639,35 +645,31 @@ sim_var <- function(n, trials, true_var) {## function to simulate unbiased varia
 }
 ```
 
-Let’s run a simulatio with this function. First, when
-![n=5](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n%3D5 "n=5"),
-run:
+Let’s run a simulation with this function. First, when $n=5$, run:
 
 ``` r
 sim_var(n = 5, trials = 1000, true_var = 10)
 ```
 
-    ##                   mean       sd
-    ## sample var.   7.994260 5.673357
-    ## unbiased var. 9.992825 7.091696
+    ##                    mean      sd
+    ## sample var.    8.379985 5.93668
+    ## unbiased var. 10.474981 7.42085
 
 We got the result.
 
-Let’s increase the smaple size to 10,
+Let’s increase the sample size to 10,
 
 ``` r
 sim_var(n = 10, trials = 1000, true_var = 10)
 ```
 
     ##                    mean       sd
-    ## sample var.    9.161073 4.247809
-    ## unbiased var. 10.178970 4.719788
+    ## sample var.    9.024754 4.342492
+    ## unbiased var. 10.027505 4.824992
 
 Using the function we created above, let’s make a new function to run a
 simulation for different sample sizes simultaneously. Here, we define a
-function to simulate all
-![n](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n "n")’s
-between **n_min** and **n_max**.
+function to simulate all $n$’s between **n_min** and **n_max**.
 
 ``` r
 sim_var2 <- function(n_min = 1, n_max, trials = 1000, true_var){
@@ -677,13 +679,13 @@ sim_var2 <- function(n_min = 1, n_max, trials = 1000, true_var){
     ##       trials = n. of iterations in a simulation, default to 1000
     ##       true_var = sigma^2 (the population variance)
     ## Return: A list of matrix returned by sim_var
-    
+
     ## Print error message if the input value is wrong
     if (n_min < 1) stop(message = "n.min must be a positive integer")
     if (n_max < 1) stop(message = "n.max must be a positive integer")
     if (trials < 1) stop(message = "trials must be a positive integer")
     if (true_var < 0) stop(message = "true_var must be a positive value")
-    
+
     ## sample sizes
     n_vec <- n_min:n_max
     ## matrix to save the result
@@ -694,16 +696,15 @@ sim_var2 <- function(n_min = 1, n_max, trials = 1000, true_var){
         ## use the function we made before
         ## save the i-th result in the i-th row
         output[i, 1] <- n_vec[i]
-        output[i, 2:5] <- as.vector(sim_var(n = n_vec[i], trials = trials, 
+        output[i, 2:5] <- as.vector(sim_var(n = n_vec[i], trials = trials,
                                             true_var = true_var))
     }
     return(output)
-}      
+}
 ```
 
-For instance, run a simulation for
-![n = 10, 11, \dots, 100](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n%20%3D%2010%2C%2011%2C%20%5Cdots%2C%20100 "n = 10, 11, \dots, 100"),
-and visualize the results.
+For instance, run a simulation for $n = 10, 11, \dots, 100$, and
+visualize the results.
 
 ``` r
 sim1 <- sim_var2(n_min = 10, n_max = 100, trials = 1000, true_var = 10)
@@ -721,7 +722,7 @@ df <- df %>%
     mutate(lb = mean - sd, ub = mean + sd)
 ## make a plot
 res_sim1 <- ggplot(df, aes(x = n, y = mean, color = type))
-res_sim1 + 
+res_sim1 +
     geom_line() +
     geom_abline(intercept = 10, slope = 0, color = "royalblue", linetype = "dashed") +
     scale_color_discrete(name = "variance", labels = c(expression(s^2), expression(u^2)))
@@ -729,12 +730,11 @@ res_sim1 +
 
 ![](Literate-Programming_files/figure-gfm/visualize-simulation-1.png)<!-- -->
 
-The next figure displays the same result with error bars (mean
-![\pm](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cpm "\pm")
+The next figure displays the same result with error bars (mean $\pm$
 sd).
 
 ``` r
-last_plot() + 
+last_plot() +
     geom_pointrange(aes(ymin = lb, ymax = ub))
 ```
 
@@ -753,13 +753,13 @@ Markdown](https:%20//holtzy.github.io/Pimp-my-rmd/).
 sessionInfo()
 ```
 
-    ## R version 3.6.3 (2020-02-29)
+    ## R version 4.2.2 (2022-10-31)
     ## Platform: x86_64-pc-linux-gnu (64-bit)
-    ## Running under: Pop!_OS 20.04 LTS
+    ## Running under: Ubuntu 22.04.2 LTS
     ## 
     ## Matrix products: default
     ## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
-    ## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3
+    ## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so
     ## 
     ## locale:
     ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -773,16 +773,15 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] dplyr_1.0.9   ggplot2_3.3.3
+    ## [1] dplyr_1.1.4   ggplot2_3.4.4
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] pillar_1.8.0     compiler_3.6.3   highr_0.9        tools_3.6.3     
-    ##  [5] digest_0.6.27    evaluate_0.15    lifecycle_1.0.3  tibble_3.1.8    
-    ##  [9] gtable_0.3.0     pkgconfig_2.0.3  rlang_1.1.0      cli_3.6.1       
-    ## [13] DBI_1.1.1        rstudioapi_0.13  yaml_2.2.1       xfun_0.38       
-    ## [17] fastmap_1.1.0    withr_2.4.2      knitr_1.42       generics_0.1.3  
-    ## [21] vctrs_0.4.1      grid_3.6.3       tidyselect_1.1.2 glue_1.6.2      
-    ## [25] R6_2.5.1         fansi_1.0.3      rmarkdown_2.14   purrr_0.3.4     
-    ## [29] farver_2.1.0     magrittr_2.0.3   scales_1.1.1     htmltools_0.5.3 
-    ## [33] assertthat_0.2.1 colorspace_2.0-1 labeling_0.4.2   utf8_1.2.2      
-    ## [37] munsell_0.5.0
+    ##  [1] rstudioapi_0.15.0 knitr_1.44        magrittr_2.0.3    tidyselect_1.2.0 
+    ##  [5] munsell_0.5.0     colorspace_2.1-0  R6_2.5.1          rlang_1.1.1      
+    ##  [9] fastmap_1.1.1     fansi_1.0.4       tools_4.2.2       grid_4.2.2       
+    ## [13] gtable_0.3.4      xfun_0.40         utf8_1.2.3        cli_3.6.1        
+    ## [17] withr_2.5.0       htmltools_0.5.6   yaml_2.3.7        digest_0.6.33    
+    ## [21] tibble_3.2.1      lifecycle_1.0.3   farver_2.1.1      vctrs_0.6.5      
+    ## [25] glue_1.6.2        evaluate_0.21     rmarkdown_2.25    labeling_0.4.3   
+    ## [29] compiler_4.2.2    pillar_1.9.0      generics_0.1.3    scales_1.2.1     
+    ## [33] pkgconfig_2.0.3
