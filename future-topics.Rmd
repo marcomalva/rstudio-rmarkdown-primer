@@ -1,0 +1,198 @@
+---
+title: "Future Topics"
+author: Marco Malva
+date: "2023-05-06"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+# Future Topics
+
+This is mostly a collection of links to be explored at a future point in time if time and interests allow.
+
+## Plots
+
+* [Plotting multiple values in histogram](https://stackoverflow.com/questions/38577924/piping-histograms-in-dplyr-r)
+* [Draw Multiple Variables as Lines to Same ggplot2 Plot in R](https://statisticsglobe.com/r-draw-multiple-lines-to-same-ggplot2-plot)
+* [Multiple Regression Lines](https://www.tutorialspoint.com/create-multiple-regression-lines-in-a-single-plot-using-ggplot2-in-r)
+* [How To Transform Data in R](https://www.statology.org/transform-data-in-r/)
+* [Transform Data To Fit Normal Distribution](https://machinelearningmastery.com/how-to-transform-data-to-fit-the-normal-distribution/)
+* [Keep Rows That Match Condition](https://dplyr.tidyverse.org/reference/filter.html)
+
+* [R: Examples for 'car::qqPlot'](http://localhost:8787/help/library/car/Example/qqPlot)
+* [Q–Q plot - Wikipedia](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot)
+* [r - Side-by-side plots with ggplot2 - Stack Overflow](https://stackoverflow.com/questions/1249548/side-by-side-plots-with-ggplot2)
+* [r - Side-by-side plots with ggplot2 - Stack Overflow](https://stackoverflow.com/questions/1249548/side-by-side-plots-with-ggplot2/31223588#31223588)
+* [r - Creating a Plot Window of a Particular Size - Stack Overflow](https://stackoverflow.com/questions/2129952/creating-a-plot-window-of-a-particular-size)
+* [r - Increase number of axis ticks - Stack Overflow](https://stackoverflow.com/questions/11335836/increase-number-of-axis-ticks)
+* [How to Plot a Time Series in R (With Examples) - Statology](https://www.statology.org/plot-time-series-in-r/)
+* [ggplot2 title : main, axis and legend titles - Easy Guides - Wiki - STHDA](http://www.sthda.com/english/wiki/ggplot2-title-main-axis-and-legend-titles)
+* [r - How to add a title for a grid.layout figure in ggplot2?](https://stackoverflow.com/questions/37052059/how-to-add-a-title-for-a-grid-layout-figure-in-ggplot2)
+
+## Markdown
+
+* [Pandoc - Pandoc User’s Guide](https://pandoc.org/MANUAL.html#pandocs-markdown)
+* [Markdown Basics](https://rmarkdown.rstudio.com/authoring_basics.html)
+* [Gallery](https://rmarkdown.rstudio.com/gallery.html)
+* [Markdown Styles](http://mixu.net/markdown-styles/)
+
+Superscripts may be written by surrounding the superscripted text by ^ characters;
+subscripts may be written by surrounding the subscripted text by ~ characters. 
+Thus, for example,
+
+- H~2~O is a liquid.  
+- 2^10^ is 1024
+
+```ansi
+- H~2~O is a liquid.  
+- 2^10^ is 1024
+```
+
+## Tables
+
+* [Create Awesome HTML Tables with kable](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+* [CSS table with alternating color rows](https://www.textfixer.com/tutorials/css-table-alternating-rows.php)
+
+## Statistical Tests
+
+* [Levene's Test for Homogeneity of Variance - Brave Search](https://search.brave.com/search?q=Levene%27s+Test+for+Homogeneity+of+Variance&source=desktop)
+* [Wilcoxon signed-rank test - Wikipedia](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test)
+* [Shapiro–Wilk test - Wikipedia](https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test)
+* [Anderson–Darling test - Wikipedia](https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test)
+* [Normality test - Wikipedia](https://en.wikipedia.org/wiki/Normality_test)
+* [Welch's t-test - Wikipedia](https://en.wikipedia.org/wiki/Welch's_t-test#cite_note-5)
+
+* [R Handbook: Hypothesis Testing and p-values](https://rcompanion.org/handbook/D_01.html)
+* [R Handbook: One-sample t-test](https://rcompanion.org/handbook/I_02.html)
+* [10. Calculating p Values — R Tutorial](https://www.cyclismo.org/tutorial/R/pValues.html)
+* [How To Do Two-Sample T-test in R : Best Tutorial You Will Love - Datanovia](https://www.datanovia.com/en/lessons/how-to-do-a-t-test-in-r-calculation-and-reporting/how-to-do-two-sample-t-test-in-r/)
+
+* [ap05\_stats\_allwood\_fin4prod.pdf](https://secure-media.collegeboard.org/apc/ap05_stats_allwood_fin4prod.pdf)
+* [The 20% Statistician: Always use Welch's t-test instead of Student's t-test](https://daniellakens.blogspot.com/2015/01/always-use-welchs-t-test-instead-of.html)
+* [ANOVA in R - Stats and R](https://statsandr.com/blog/anova-in-r/)
+* [ANOVA in R | A Complete Step-by-Step Guide with Examples](https://www.scribbr.com/statistics/anova-in-r/)
+* [anova.pdf](https://pages.stat.wisc.edu/~yandell/st571/R/anova.pdf)
+* [symbols - Can I type \LaTeX inside inline code in Rmarkdown? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/481748/can-i-type-latex-inside-inline-code-in-rmarkdown)
+* [One-way ANOVA | When and How to Use It (With Examples)](https://www.scribbr.com/statistics/one-way-anova/)
+* [One sample t test](https://www.graphpad.com/quickcalcs/oneSampleT1/)
+
+* [t test formula - Easy Guides - Wiki - STHDA](http://www.sthda.com/english/wiki/t-test-formula)
+* [One sample t test](https://www.graphpad.com/quickcalcs/oneSampleT1/)
+
+* [Posit Connect | Deploy all of your R & Python content](https://posit.co/products/enterprise/connect/)
+* [Primer Definition & Meaning - Merriam-Webster](https://www.merriam-webster.com/dictionary/primer)
+* [splitChunk – RStudio addin for splitting code chunks in R Markdown | R-bloggers](https://www.r-bloggers.com/2017/02/splitchunk-rstudio-addin-for-splitting-code-chunks-in-r-markdown/)
+* [OramaSearch, a full-text search in your React application - DEV Community](https://dev.to/this-is-learning/oramasearch-a-full-text-search-in-your-react-application-20k0)
+* [embedding.pdf](https://cran.r-project.org/web/packages/car/vignettes/embedding.pdf)
+
+* [CRAN - Package effects](https://cran.r-project.org/web/packages/effects/index.html)
+* [effects: Effect Displays for Linear, Generalized Linear, and Other Models](https://cran.r-project.org/web/packages/effects/effects.pdf)
+* [functions-supported-by-effects.pdf](https://cran.r-project.org/web/packages/effects/vignettes/functions-supported-by-effects.pdf)
+* [partial-residuals.pdf](https://cran.r-project.org/web/packages/effects/vignettes/partial-residuals.pdf)
+* [predictor-effects-gallery.pdf](https://cran.r-project.org/web/packages/effects/vignettes/predictor-effects-gallery.pdf)
+* [R site-library and library - Brave Search](https://search.brave.com/search?q=R+site-library+and+library&source=web)
+* [Should you use the --user flag in rootless containers? | Enable Sysadmin](https://www.redhat.com/sysadmin/user-flag-rootless-containers)
+* [What relationships tie ACL mask and standard group permission on a file? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/147499/what-relationships-tie-acl-mask-and-standard-group-permission-on-a-file)
+* [27.3.�Handling ACLs](http://mirror.apps.cam.ac.uk/pub/doc/suse/sles9/adminguide-sles9/ch27s03.html)
+* [r - Install RPostgreSQL on Debian with PostgreSQL 9.4 libpq-fe.h Error - Stack Overflow](https://stackoverflow.com/questions/27637110/install-rpostgresql-on-debian-with-postgresql-9-4-libpq-fe-h-error)
+
+## Docker / Podman
+
+* [Running RStudio Server with Docker - Dave Tang's blog](https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/)
+* [What are recommended volumes to link for RStudio images? · Issue #122 · rocker-org/rocker-versioned · GitHub](https://github.com/rocker-org/rocker-versioned/issues/122)
+* [Rocker Project - Shared Volumes](https://rocker-project.org/use/shared_volumes.html)
+* [learning\_docker/rstudio at main · davetang/learning\_docker · GitHub](https://github.com/davetang/learning_docker/tree/main/rstudio)
+* ['Upload' button missing on 'Files' pane - RStudio IDE - Posit Community](https://community.rstudio.com/t/upload-button-missing-on-files-pane/46707/4)
+* [Rstudio: Changing the Default Library](https://www.accelebrate.com/library/how-to-articles/r-rstudio-library)
+
+* [No write permissions when mounting local volumes with podman · Issue #251 · rocker-org/rocker-versioned2 · GitHub](https://github.com/rocker-org/rocker-versioned2/issues/251)
+* [Using volumes with rootless podman, explained - Tutorial Works](https://www.tutorialworks.com/podman-rootless-volumes/#podman-unshare-lets-you-run-a-command-in-the-same-user-namespace-as-your-containers)
+
+* [Launching RStudio in Docker](https://jsta.github.io/r-docker-tutorial/02-Launching-Docker.html)
+* [Running RStudio Server with Docker - Dave Tang's blog](https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/)
+
+## Bash / Shell
+
+* [Count JSON Array Elements with jq - PHPFog.com](https://phpfog.com/count-json-array-elements-with-jq/)
+* [Read filename without extension in Bash](https://linuxhint.com/read_filename_without_extension_bash/)
+* [How to get File Name and extension in bash|shell script programming](https://www.w3schools.io/terminal/bash-extract-file-extension/)
+* [How to Redirect stderr to stdout in Bash | Linuxize](https://linuxize.com/post/bash-redirect-stderr-stdout/)
+
+## Hash
+
+* [Secure way to shorten a hash - Information Security Stack Exchange](https://security.stackexchange.com/questions/97377/secure-way-to-shorten-a-hash)
+* [sha256 package - crypto/sha256 - Go Packages](https://pkg.go.dev/crypto/sha256#New)
+
+## Git
+
+* [HTTPS vs SSH in git](https://ourtechroom.com/tech/https-vs-ssh-in-git/)
+
+## R Data Frame
+
+* [How to Create DataFrame in R (with Examples) – Data to Fish](https://datatofish.com/create-dataframe-in-r/)
+* [Dataquest : How to Create a Dataframe in R with 30 Code Examples (2023)](https://www.dataquest.io/blog/how-to-create-a-dataframe-in-r/)
+* [How to Convert Table to Data Frame in R (With Examples) - Statology](https://www.statology.org/convert-table-to-data-frame-in-r/)
+* [6 Working with Tables in R | Data Analysis and Processing with R based on IBIS data](https://bookdown.org/kdonovan125/ibis_data_analysis_r4/working-with-tables-in-r.html)
+* [R convert large character string to dataframe - Stack Overflow](https://stackoverflow.com/questions/41076240/r-convert-large-character-string-to-dataframe)
+
+## R Filter
+
+* [Keep rows that match a condition — filter • dplyr](https://dplyr.tidyverse.org/reference/filter.html)
+* [r - Difference between [] and $ operators for subsetting - Stack Overflow](https://stackoverflow.com/questions/45918827/difference-between-and-operators-for-subsetting)
+
+## R Mode
+
+* [How to find mode for an R data frame column](https://www.tutorialspoint.com/how-to-find-mode-for-an-r-data-frame-column)
+* [Mode in R (4 Programming Examples) | Self-Defined & DescTools Package](https://statisticsglobe.com/mode-in-r-programming-example)
+
+## R Var and SD
+
+* [R: Sample variance and SD](https://influentialpoints.com/notes/n3rvari.htm)
+
+## R Misc
+
+* [R print with values - Brave Search](https://search.brave.com/search?q=R+print+with+values&source=desktop)
+* [Research Methods in Political Science I](https://yukiyanai.github.io/teaching/rm1/contents/R/Literate-Programming.html)
+
+* [rmarkdown-2.0.key](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/rmarkdown-2.0_layout2.pdf)
+
+* [Advanced R barplot customization – the R Graph Gallery](https://r-graph-gallery.com/210-custom-barplot-layout.html)
+* [Select Columns in R by Name, Index, Letters, & Certain Words with dplyr](https://www.marsja.se/select-columns-in-r-by-name-index-letters-certain-words-with-dplyr/)
+
+## Reports
+
+* [40 Reports with R Markdown | The Epidemiologist R Handbook](https://epirhandbook.com/en/reports-with-r-markdown.html)
+ 
+## Cross-Reference
+
+* [Cross-reference images in Rmarkdown? - R Markdown - Posit Community](https://community.rstudio.com/t/cross-reference-images-in-rmarkdown/83402)
+* [12 Citing Figures, Tables & Sections | RMarkdown for Scientists](https://rmd4sci.njtierney.com/start.html)
+
+##f Visualize
+
+* [paulklemm/rvisidata: README.md](https://rdrr.io/github/paulklemm/rvisidata/f/README.md)
+* [Summarizing Data in R (Descriptive Statistics)](https://michaelminn.net/tutorials/r-summarizing-data/index.html)
+* [Data Analysis and Visualisation in R for Ecologists: Manipulating, analyzing and exporting data with tidyverse](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html)
+
+## PlanmtUML
+
+While writing about PlantUML I also came across:
+
+* [Code Chunks](https://rmarkdown.rstudio.com/lesson-3.html)
+* [Options - Chunk options and package options - Yihui Xie | 谢益辉](https://yihui.org/knitr/options/)
+* [r-tip: 3 rmarkdown tricks I use every day | Credibly Curious](https://www.njtierney.com/post/2018/02/28/three-r-tips/)
+* [So That's How You Do It | My learning journey](https://sothatshowyoudoit.wordpress.com/)
+* [r - JSON tree in rmarkdown plotly - Stack Overflow](https://stackoverflow.com/questions/51378535/json-tree-in-rmarkdown-plotly)
+
+## R Greek Letters and Math Symbols
+
+* [The Greek Alphabet in LaTeX](https://jblevins.org/log/greek)
+* [latex Formula of the Standard Error. - Brave Search](https://search.brave.com/search?q=latex+Formula+of+the+Standard+Error.&source=web)
+* [symbols - How does one insert a backslash or a tilde (\~) into LaTeX? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/9363/how-does-one-insert-a-backslash-or-a-tilde-into-latex)
+* [math mode - Formula for population variance, issues with placement? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/26686/formula-for-population-variance-issues-with-placement)
+* [List of LaTeX mathematical symbols - OeisWiki](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
+

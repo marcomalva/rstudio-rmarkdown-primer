@@ -1,0 +1,33 @@
+---
+title: "R snippets"
+author: Marco Malva
+date: "2023-05-06"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+
+```{r, eval=FALSE}
+dataframe$periodframe <- ifelse(dataframe$year > 1991,"post-1991", "pre-1991")
+
+plants_df %>% select(percent_cover) %>% with(hist(percent_cover))
+plants_df |> filter (dist_from_edge_m == "0.0",dist_from_edge_m == "6.0" ) |> summary()
+plants_df |> filter (dist_from_edge_m == "0.0",dist_from_edge_m == "6.0" ) |> length()
+```
+
+
+Superscripts may be written by surrounding the superscripted text by ^ characters;
+subscripts may be written by surrounding the subscripted text by ~ characters. 
+Thus, for example,
+
+- H~2~O is a liquid.  
+- 2^10^ is 1024
+
+```ansi
+- H~2~O is a liquid.  
+- 2^10^ is 1024
+```

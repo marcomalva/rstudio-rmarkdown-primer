@@ -1,119 +1,13 @@
-# Getting Started
-
-This documents get you started with **RStudio in in `docker/podman` container** intended for **continuous use**.
-It is based on my setup where I am running RStudio 2022.12.0 Build 353
-in a `podman` container on Fedora 37. The `podman` container runs Ubuntu 22.04.2 LTS.
-As such it also discusses the errors I ran into and how those were solved.
-
-If you are interested in a **simpler or more isolated setup**, see: [rocker-getting-started-sanboxed](./hello-world/rocker-getting-started-sanboxed.md).
-This also has some screenshot as to show what to expect in terms of a UI experience.
+# Packages Install
 
 ## TL;DR
 
-In order to get running:
+### OS Packages
 
-1. launch RStudio
-2. install required OS packages (if needed)
-3. install R packages (as needed)
+These installs must be run as
 
-All of these steps are covered below.
-
-If you are new to RStudio then you may want to watch one of the many
-RStudio introduction videos (not covered in this document).
-
-## Install RStudio
-
-You can install RStudio natively or as a `docker/podman` container.
-
-### Native Installation
-
-For the **native installation** consult the excellent RStudio (now Posit) web pages:
-
-- [RStudio Desktop - Posit](https://posit.co/download/rstudio-desktop/)
-- [Download RStudio | The Popular Open-Source IDE from Posit](https://posit.co/products/open-source/rstudio/)
-
-### Install RStudio As Docker/Podman Container
-
-The following two articles helped me setting up my system:
-
-- [Launching RStudio in Docker](https://jsta.github.io/r-docker-tutorial/02-Launching-Docker.html)
-- [Running RStudio Server with Docker - Dave Tang's blog](https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/)
-
-### Launch Script
-
-If you are using `docker` or `podman` have a look at the shell script: [docker-run-rstudio-mounted-volumes.sh](../scripts/docker-run-rstudio-mounted-volumes.sh)
-
-At the core of this shell script is:
-
-```bash
-if [[ -z "${PASSWORD}" && -f ~/.secrets/local/docker/rstudio/env-sops.yaml ]]; then PASSWORD=$(sops --decrypt --extract '["PASSWORD"]' ~/.secrets/local/docker/rstudio/env-sops.yaml); fi
-PASSWORD=${PASSWORD:-change_me}
-
-podman run --rm -ti --name rstudio_mounted -p 8788:8787 \
-	-v ${HOME}/r_packages/site-library:/usr/local/lib/R/site-library:Z \
-	-v ${HOME}/Documents/rstudio:/home/rstudio/rstudio:Z \
-	-e PASSWORD=${PASSWORD} \
-	-e USERID=$(id -u) \
-	-e GROUPID=$(id -g) \
-	rocker/rstudio
-
-unset PASSWORD
-```
-
-The shell script uses `sops` to use an **encrypted password** and not risk leaking the password in the project.
-One can not set the password in which case a the `rocker` image generates a random password. The benefit of 
-explicit setting the password is that one can store it in the web browser which makes it more convenient to log-in again.
-
-The shell script is also **mounting two folders** which must be created with the appropriate permission
-
-- `${HOME}/r_packages/site-library`: such that packages survive `podman` image restart
-- `${HOME}/Documents/rstudio`: working folder for R projects
-
-> To add files to the work space best use the `Upload` button under `Files` in the
-> forth quadrant (south/west).
-
-### Folder Permission
-
-Probably the most tricky part with `podman` and shared folder is getting the shared folder permission setup correctly.
-
-I creating a shared folder with **group-write and sticky bit*** and set the owner to `podman` user:
-
-```bash
-mkdir -p ${HOME}/r_packages/site-library
-podman unshare chown -R $(id -u):$(id -g) ${HOME}/r_packages/site-library
-
-mkdir -p ${HOME}/Documents/rstudio
-chmod -R g+w ${HOME}/Documents/rstudio
-chmod -R g+s ${HOME}/Documents/rstudio
-podman unshare chown -R $(id -u) ${HOME}/Documents/rstudio
-```
-
-Here is the `stat` output on my system as reference:
-
-```bash
-$ stat ${HOME}/r_packages/site-library
-  File: /home/marco/r_packages/site-library
-  Size: 12288     	Blocks: 24         IO Block: 4096   directory
-Device: 253,2	Inode: 1992796     Links: 296
-Access: (0755/drwxr-xr-x)  Uid: (100999/ UNKNOWN)   Gid: ( 1000/   marco)
-Context: system_u:object_r:container_file_t:s0:c304,c732
-
-$ stat ${HOME}/Documents/rstudio
-  File: /home/marco/Documents/rstudio
-  Size: 4096      	Blocks: 16         IO Block: 4096   directory
-Device: 253,2	Inode: 1992531     Links: 4
-Access: (0775/drwxrwxr-x)  Uid: ( 1000/   marco)   Gid: ( 1000/   marco)
-Context: system_u:object_r:container_file_t:s0:c304,c732
-```
-
-> Next: Install required OS packages to get Knitr to work and PostgreSQL queries.
-
-## Install OS Packages
-
-These installs must be run as `root` user from wihtin the `podman` container.
-.
-- without the first package set (`xvfb xauth xfonts-base`) `Knitr` won't work and
-- without the second package (set)`libpq-dev`)one can not run SQL queries against a PostgreSQL database
+* without the first `Knit` won't work on Linux and 
+* w/o the second one can not run SQL queries against a PostgreSQL database
 
 For the operating system packages first connect to the `podman` container:
 
@@ -129,11 +23,7 @@ apt-get install -y xvfb xauth xfonts-base
 apt-get install -y libpq-dev
 ```
 
-**TO-DO**: I will create my own docker image w/ all OS packages pre-installed.
-
-> Next: Install R packages as needed.
-
-## Install R Packages
+### R Packages
 
 Which **R packages** are needed depends on what you want to use.
 
@@ -163,12 +53,12 @@ The CLI command has the advantage that it is easier to communicate, document,
 and automate.
 
 ## OS Package Fixes
-
+ 
 ### Fix X11 Display
 
 When running Knit I got the something like the following error message:
 
-```ansi
+```
 Unable to open /usr/local/lib/R/modules/R_X11.so
 ```
 
@@ -178,7 +68,7 @@ To fix it I had to connect to the `podman` image:
 podman exec -it rstudio_mounted /bin/bash
 ```
 
-And run within the `podman container`:
+and run within the `podman image`:
 
 ```bash
 apt update
@@ -313,7 +203,7 @@ Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
 
 ### Install R Package RPostgreSQL Fails
 
-This took about one minute:
+Took about one minute.
 
 ```
 ** Installing R Packages: 'kableExtra', 'RPostgreSQL', 'rstudioapi', 'shiny'
@@ -325,7 +215,7 @@ In utils::install.packages("RPostgreSQL", repos = "https://packagemanager.posit.
   installation of package ‘RPostgreSQL’ had non-zero exit status
 ```
 
-One must scroll up in the `Background Jobs` to **see the error**:
+One must scroll up in the `Background Jobs` to see the error:
 
 ```
 The downloaded source packages are in
