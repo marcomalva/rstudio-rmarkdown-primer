@@ -67,6 +67,8 @@ This document covers
 - JSON
   - tidyJSON: features word cloud, JSON document graph, build-in JSON editor, Violin plot, see [setup-tidyjson](./topic/json/setup-tidyjson.Rmd)
   - PlantUML: visual representation of JSON object structure or class structure, see [use-plantuml](./topic/json/use-plantuml.Rmd)
+- PCA
+  - an introduction into principal component analysis (PCA), see [pca-introduction](./topic/pca/pca-introduction.Rmd)
 
 Same as above but pointing the links to the generated Markdown files which display nicer on Github:
 
@@ -76,6 +78,8 @@ Same as above but pointing the links to the generated Markdown files which displ
 - JSON
   - tidyJSON: features word cloud, JSON document graph, build-in JSON editor, Violin plot, see [setup-tidyjson](./topic/json/setup-tidyjson.md)
   - PlantUML: visual representation of JSON object structure or class structure, see [use-plantuml](./topic/json/use-plantuml.md)
+- PCA
+  - an introduction into principal component analysis (PCA), see [pca-introduction](./topic/pca/pca-introduction.md)
 
 > TBD: Generated an overview to each topic and the documents within.
 
