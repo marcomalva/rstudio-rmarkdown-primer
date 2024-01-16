@@ -1,0 +1,116 @@
+---
+title: "RMarkdown Output Formats"
+author: "Marco Malva"
+date: "7/7/2023"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+    self_contained: true
+    code_folding: show
+    fig_width: 6
+    fig_height: 6
+    df_print: kable
+    fig_caption: yes
+    use_bookdown: true
+    lightbox: true
+    thumbnails: false
+    gallery: true
+    pandoc_args: --top-level-division=chapter
+  github_document:
+    toc: true
+---
+
+```{css, echo = FALSE}
+/** so the HTML output uses full screen width, see <https://stackoverflow.com/a/72165104>
+*/
+#content{
+  max-width:1200px;
+}
+```
+
+> The actual benefit discussed in this document are only visible if on chooses `readthedown` as the Knitr output target.
+
+# Overview
+
+If one installs
+
+```r
+install.packages("rmdformats")
+```
+
+then one can use the various `rmdformats` in the YAML section (top of Rmd document).
+
+The setting used here is
+
+```yaml
+output:
+  rmdformats::readthedown:
+    highlight: kate
+    self_contained: true
+    code_folding: show
+    fig_width: 6
+    fig_height: 6
+    df_print: kable
+    fig_caption: yes
+    use_bookdown: true
+    lightbox: true
+    thumbnails: false
+    gallery: true
+    pandoc_args: --top-level-division=chapter
+```
+
+The key features are:
+
+* visually appealing
+* a gallery of figures, i.e. if one clicks on a figure one can iterate through them by clicking
+* control of figure size in the YAML
+* control of code folding
+* self-contained, i.e. single HTML file
+* figures have captions
+* figures are numbered (use_bookdown)
+
+
+If one wants to just get figures numbered:
+
+```yaml
+output: bookdown::html_document2
+```
+
+If one wants to have similar output into HTML, PDF, and Word:
+
+```yaml
+output:
+  bookdown::html_document2: default
+  bookdown::pdf_document2:
+    keep_tex: true
+  bookdown::word_document2:
+    toc: true
+```
+
+# Sample Plots
+
+```{r plot-pressure, echo=FALSE, fig.cap="temperature vs pressure"}
+plot(pressure)
+```
+
+```{r plot-iris, echo=FALSE, fig.cap="iris length vs width"}
+plot(iris$Petal.Length, iris$Petal.Width, pch=21, bg=c("red","green3","blue")[unclass(iris$Species)], main="Edgar Anderson's Iris Data")
+```
+
+# Appendix
+
+## Basic Links
+
+- [rmdformats README](https://cran.r-project.org/web/packages/rmdformats/readme/README.html)
+- [juba/rmdformats: HTML output formats for RMarkdown documents](https://github.com/juba/rmdformats)
+- [4.10 Numbered figure captions | R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/figure-number.html#ref-R-bookdown)
+- [robobook template example](https://juba.github.io/rmdformats/articles/examples/robobook.html#table)
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+- [3.4 bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/a-single-document.html)
+
+## Links Solving Issues
+
+- [How to automatically number figures and refer to it ? · Issue #60 · juba/rmdformats](https://github.com/juba/rmdformats/issues/60)
+- [Chapter starts with 0.1 (not 1.0)](https://community.rstudio.com/t/chapter-starts-with-0-1-not-1-0-in-pdf-book-format/12797/3)
+- [Format number in R with both comma thousands separator and specified decimals - Stack Overflow](https://stackoverflow.com/questions/29465941/format-number-in-r-with-both-comma-thousands-separator-and-specified-decimals)
+
