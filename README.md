@@ -46,11 +46,9 @@ You can open [helloWorld.Rmd](./helloWorld.Rmd) and Knit it to check your instal
 
 ### Introduction into Literate Programming
 
-An more powerful introduction than the simple "Hello World" examples is provided
+An more feature rich introduction than the simple "Hello World" examples is provided
 in form of the [Literate-Programming.Rmd](./topic/distribution-shape/Literate-Programming.Rmd) RMarkdown document.
-You can view its [Markdown output](./topic/distribution-shape/Literate-Programming.md).
-
-This document covers
+You can view its [Markdown output](./topic/distribution-shape/Literate-Programming.md), it covers:
 
 - what "Literate Programming" is about and why it is useful,
 - basic Markdown concepts (bold, italic, lists, images, links)
@@ -64,10 +62,12 @@ This document covers
 - Basics
   - basic skills for text formatting, math equations, curves and plots, and editor modes, see [text-formatting](./topic/basics/text-formatting.Rmd)
   - show tables statically or dynamically, see [data-frames-and-tibbles](./topic/basics/data-frames-and-tibbles.Rmd)
+- Cluster
+  - code samples for Probabilistic Distance Clustering, see [pdq-fitting-data-to-model](./topic/cluster/pdq-fitting-data-to-model.Rmd)
 - JSON
   - tidyJSON: features word cloud, JSON document graph, build-in JSON editor, Violin plot, see [setup-tidyjson](./topic/json/setup-tidyjson.Rmd)
   - PlantUML: visual representation of JSON object structure or class structure, see [use-plantuml](./topic/json/use-plantuml.Rmd)
-- output format:
+- Output Format:
   - benefit of various output formats such as `readthedown`, see [output-format-links](./topic/output-format/output-format-links.Rmd)
 - PCA
   - an introduction into principal component analysis (PCA), see [pca-introduction](./topic/pca/pca-introduction.Rmd)
@@ -77,10 +77,12 @@ Same as above but pointing the links to the generated Markdown files which displ
 - Basic
   - basic skills for text formatting, math equations, curves and plots, and editor modes, see [text-formatting](./topic/basics/text-formatting.md)
   - show tables statically or dynamically, see [data-frames-and-tibbles](./topic/basics/data-frames-and-tibbles.md)
+- Cluster
+  - code samples for Probabilistic Distance Clustering, see [pdq-fitting-data-to-model](./topic/cluster/pdq-fitting-data-to-model.md)
 - JSON
   - tidyJSON: features word cloud, JSON document graph, build-in JSON editor, Violin plot, see [setup-tidyjson](./topic/json/setup-tidyjson.md)
   - PlantUML: visual representation of JSON object structure or class structure, see [use-plantuml](./topic/json/use-plantuml.md)
-- output format:
+- Output Format:
   - benefit of various output formats such as `readthedown`, see [output-format-links](./topic/output-format/output-format-links.md)
 - PCA
   - an introduction into principal component analysis (PCA), see [pca-introduction](./topic/pca/pca-introduction.md)
