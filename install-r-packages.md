@@ -6,7 +6,7 @@
 
 These installs must be run as
 
-* without the first `Knit` won't work on Linux and 
+* without the first `Knit` won't work on Linux and (fixed in 2024.09.1)
 * w/o the second one can not run SQL queries against a PostgreSQL database
 
 For the operating system packages first connect to the `podman` container:
@@ -22,6 +22,9 @@ apt update
 apt-get install -y xvfb xauth xfonts-base
 apt-get install -y libpq-dev
 ```
+
+> With **RStudio 2024.09.1** the packages `xauth xfonts-base xvfb` seem not
+> needed any longer.
 
 ### R Packages
 
@@ -55,6 +58,9 @@ and automate.
 ## OS Package Fixes
  
 ### Fix X11 Display
+
+> This problem does **no longer exist in RStudio 2024.09.1**. It comes with the
+> packages `xauth xfonts-base xvfb` already installed.
 
 When running Knit I got the something like the following error message:
 

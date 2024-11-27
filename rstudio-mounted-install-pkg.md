@@ -1,6 +1,11 @@
 # Installed Linux Packages
 
-I keep this file updated until I get around to create a Dockerfile with my customized RStudio setup.
+I keep this file updated until I get around to create a Dockerfile with my 
+customized RStudio setup.
+
+## Launch Command For RStudion 2024.09.1
+
+See section "Launch RStudio 2024.09.1 As Podman Container" in [rocker-getting-started-sanboxed.md](hello-world/rocker-getting-started-sanboxed.md)
 
 ## Package List
 
@@ -78,7 +83,9 @@ root@7b82984a4d98:/# exit
 exit
 ```
 
-### lsb-releease
+## lsb-releease
+
+### lsb-releease 2024.01
 
 The result of `cat /etc/lsb-release`:
 
@@ -90,7 +97,21 @@ DISTRIB_CODENAME=jammy
 DISTRIB_DESCRIPTION="Ubuntu 22.04.2 LTS"
 ```
 
-### apt install history
+### lsb-releease 2024.09.1
+
+The result of `cat /etc/lsb-release`:
+
+```bash
+root@4f779a261f7e:/# cat /etc/lsb-release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=24.04
+DISTRIB_CODENAME=noble
+DISTRIB_DESCRIPTION="Ubuntu 24.04.1 LTS"
+```
+
+## apt RStudio 
+
+### apt install history 2024.01
 
 The result of `zgrep -E "Commandline: apt(|-get) install" /var/log/apt/history.log*`:
 
@@ -211,7 +232,7 @@ Commandline: apt install default-jre
 Commandline: apt install graphviz
 ```
 
-### apt list installed
+### apt list installed 2024.01
 
 The result of `apt list --installed`
 
@@ -1198,5 +1219,118 @@ xz-utils/jammy,now 5.2.5-2ubuntu1 amd64 [installed,automatic]
 zip/jammy,now 3.0-12build2 amd64 [installed]
 zlib1g-dev/jammy-updates,jammy-security,now 1:1.2.11.dfsg-2ubuntu9.2 amd64 [installed,automatic]
 zlib1g/jammy-updates,jammy-security,now 1:1.2.11.dfsg-2ubuntu9.2 amd64 [installed]
+```
 
+### apt install history 2024.09.1
+
+```bash
+root@4f779a261f7e:/# zgrep -E "Commandline: apt(|-get) install" /var/log/apt/history.log* 
+Commandline: apt-get install --reinstall apt
+Commandline: apt-get install --reinstall base-files
+Commandline: apt-get install --reinstall base-passwd
+Commandline: apt-get install --reinstall bash
+Commandline: apt-get install --reinstall bsdutils
+Commandline: apt-get install --reinstall coreutils
+Commandline: apt-get install --reinstall dash
+Commandline: apt-get install --reinstall debconf
+Commandline: apt-get install --reinstall debianutils
+Commandline: apt-get install --reinstall diffutils
+Commandline: apt-get install --reinstall dpkg
+Commandline: apt-get install --reinstall e2fsprogs
+Commandline: apt-get install --reinstall findutils
+Commandline: apt-get install --reinstall gcc-14-base:amd64
+Commandline: apt-get install --reinstall gpgv
+Commandline: apt-get install --reinstall grep
+Commandline: apt-get install --reinstall gzip
+Commandline: apt-get install --reinstall hostname
+Commandline: apt-get install --reinstall init-system-helpers
+Commandline: apt-get install --reinstall libacl1:amd64
+Commandline: apt-get install --reinstall libapt-pkg6.0t64:amd64
+Commandline: apt-get install --reinstall libassuan0:amd64
+Commandline: apt-get install --reinstall libattr1:amd64
+Commandline: apt-get install --reinstall libaudit-common
+Commandline: apt-get install --reinstall libaudit1:amd64
+Commandline: apt-get install --reinstall libblkid1:amd64
+Commandline: apt-get install --reinstall libbz2-1.0:amd64
+Commandline: apt-get install --reinstall libc-bin
+Commandline: apt-get install --reinstall libc6:amd64
+Commandline: apt-get install --reinstall libcap-ng0:amd64
+Commandline: apt-get install --reinstall libcap2:amd64
+Commandline: apt-get install --reinstall libcom-err2:amd64
+Commandline: apt-get install --reinstall libcrypt1:amd64
+Commandline: apt-get install --reinstall libdebconfclient0:amd64
+Commandline: apt-get install --reinstall libext2fs2t64:amd64
+Commandline: apt-get install --reinstall libffi8:amd64
+Commandline: apt-get install --reinstall libgcc-s1:amd64
+Commandline: apt-get install --reinstall libgcrypt20:amd64
+Commandline: apt-get install --reinstall libgmp10:amd64
+Commandline: apt-get install --reinstall libgnutls30t64:amd64
+Commandline: apt-get install --reinstall libgpg-error0:amd64
+Commandline: apt-get install --reinstall libhogweed6t64:amd64
+Commandline: apt-get install --reinstall libidn2-0:amd64
+Commandline: apt-get install --reinstall liblz4-1:amd64
+Commandline: apt-get install --reinstall liblzma5:amd64
+Commandline: apt-get install --reinstall libmd0:amd64
+Commandline: apt-get install --reinstall libmount1:amd64
+Commandline: apt-get install --reinstall libncursesw6:amd64
+Commandline: apt-get install --reinstall libnettle8t64:amd64
+Commandline: apt-get install --reinstall libnpth0t64:amd64
+Commandline: apt-get install --reinstall libp11-kit0:amd64
+Commandline: apt-get install --reinstall libpam-modules:amd64
+Commandline: apt-get install --reinstall libpam-modules-bin
+Commandline: apt-get install --reinstall libpam-runtime
+Commandline: apt-get install --reinstall libpam0g:amd64
+Commandline: apt-get install --reinstall libpcre2-8-0:amd64
+Commandline: apt-get install --reinstall libproc2-0:amd64
+Commandline: apt-get install --reinstall libseccomp2:amd64
+Commandline: apt-get install --reinstall libselinux1:amd64
+Commandline: apt-get install --reinstall libsemanage-common
+Commandline: apt-get install --reinstall libsemanage2:amd64
+Commandline: apt-get install --reinstall libsepol2:amd64
+Commandline: apt-get install --reinstall libsmartcols1:amd64
+Commandline: apt-get install --reinstall libss2:amd64
+Commandline: apt-get install --reinstall libssl3t64:amd64
+Commandline: apt-get install --reinstall libstdc++6:amd64
+Commandline: apt-get install --reinstall libsystemd0:amd64
+Commandline: apt-get install --reinstall libtasn1-6:amd64
+Commandline: apt-get install --reinstall libtinfo6:amd64
+Commandline: apt-get install --reinstall libudev1:amd64
+Commandline: apt-get install --reinstall libunistring5:amd64
+Commandline: apt-get install --reinstall libuuid1:amd64
+Commandline: apt-get install --reinstall libxxhash0:amd64
+Commandline: apt-get install --reinstall libzstd1:amd64
+Commandline: apt-get install --reinstall login
+Commandline: apt-get install --reinstall logsave
+Commandline: apt-get install --reinstall mawk
+Commandline: apt-get install --reinstall mount
+Commandline: apt-get install --reinstall ncurses-base
+Commandline: apt-get install --reinstall ncurses-bin
+Commandline: apt-get install --reinstall passwd
+Commandline: apt-get install --reinstall perl-base
+Commandline: apt-get install --reinstall procps
+Commandline: apt-get install --reinstall sed
+Commandline: apt-get install --reinstall sensible-utils
+Commandline: apt-get install --reinstall sysvinit-utils
+Commandline: apt-get install --reinstall tar
+Commandline: apt-get install --reinstall ubuntu-keyring
+Commandline: apt-get install --reinstall util-linux
+Commandline: apt-get install --reinstall zlib1g:amd64
+Commandline: apt-get install -y --no-install-recommends bash-completion ca-certificates file fonts-texgyre g++ gfortran gsfonts libblas-dev libbz2-* libcurl4 libicu[0-9][0-9] liblapack-dev libpcre2* libjpeg-turbo* libpangocairo-* libpng16* libreadline8 libtiff* liblzma* libxt6 make tzdata unzip zip zlib1g
+Commandline: apt-get install -y --no-install-recommends curl default-jdk devscripts libbz2-dev libcairo2-dev libcurl4-openssl-dev libpango1.0-dev libjpeg-dev libicu-dev libpcre2-dev libpng-dev libreadline-dev libtiff5-dev liblzma-dev libx11-dev libxt-dev perl rsync subversion tcl-dev tk-dev texinfo texlive-extra-utils texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended texlive-latex-extra x11proto-core-dev xauth xfonts-base xvfb wget zlib1g-dev
+Commandline: apt-get install -y --no-install-recommends libopenblas-dev
+Commandline: apt-get install -y --no-install-recommends libpcre2-dev libdeflate-dev liblzma-dev libbz2-dev zlib1g-dev libicu-dev
+Commandline: apt-get install -y --no-install-recommends ca-certificates gdebi-core git libclang-dev libssl-dev lsb-release psmisc pwgen sudo wget
+Commandline: apt-get install libpq-dev
+root@4f779a261f7e:/#
+```
+
+The last one `libpq-dev` was installed manually by me with:
+
+```bash
+# connect to running docker/podman container
+podman exec -it rstudio_mounted /bin/bash
+
+# install libpq-dev
+apt update
+apt-get install libpq-dev
 ```
